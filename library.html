@@ -47,16 +47,30 @@
     var libraryTemplateHtml = $('#templates .library').html();
     var libraryTemplate = _.template(libraryTemplateHtml);
 
-    // The var book , which contains book info  
-    var book = {
+    // The var books array, which contains book info for multiple books
+    var books = [{
       title: 'What is the What',
       author: 'Dave Eggers',
       status: 'available'
-    };
+    },
+    {
+      title:'The Lacuna',
+      author:'Barbara Kingsolver',
+      status:'available'
+    },
+    {
+      title:'The China Study',
+      author: 'T. Colin Campbell',
+      status:'available'
+    }
+    ];
 
-    // // Code to get all items on webpage
-    var newLibraryHtml = libraryTemplate(book);
-  $('#library').append(newLibraryHtml);
+    // For loop to first iterate through each member of array, then add each book's title, author, and status to html in library div
+    for (i=0; i<books.length;i+=1){
+    var newLibraryHtml = libraryTemplate(books[i])
+    $('#library').append(newLibraryHtml);
+    };
+    
 </script>
 
 <small>It's back.</small>
