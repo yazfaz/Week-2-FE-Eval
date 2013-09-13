@@ -20,19 +20,43 @@
 </head>
 <body>
 
-<h1>THE LIBRARY</h1>
+  <h1>THE LIBRARY</h1>
 
 
-<div id="library"></div>
+  <div id="library"></div>
 
-<div id="templates">
-
-</div>
+<!-- Set up template string -->
+  <div id="templates">
+    <script class="library" type="text/template">
+      <div class="book">
+        <p>
+         <h3><%= title %></h3> 
+         <h5><%= author %></h5>
+         <h5><%= status %></h5>
+        </p>
+      </div>
+    </script>
+  </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+
+<!-- What I'm adding -->
 <script type="text/javascript">
-  // TODO
+    // Template format from Thursday lesson
+    var libraryTemplateHtml = $('#templates .library').html();
+    var libraryTemplate = _.template(libraryTemplateHtml);
+
+    // The var book , which contains book info  
+    var book = {
+      title: 'What is the What',
+      author: 'Dave Eggers',
+      status: 'available'
+    };
+
+    // // Code to get all items on webpage
+    var newLibraryHtml = libraryTemplate(book);
+  $('#library').append(newLibraryHtml);
 </script>
 
 <small>It's back.</small>
