@@ -20,6 +20,15 @@
 </head>
 <body>
 
+ <!-- Labels and Inputs so user can type in an author and title -->
+  <label id="title">Title: </label>
+  <input id="title-input" type="text"></input>
+
+  <label id="author">Author: </label>
+  <input id="author-input" type="text"></input>
+
+  <input id="submit-button" type="button" value="Submit"/>
+
   <h1>THE LIBRARY</h1>
 
 
@@ -48,29 +57,42 @@
     var libraryTemplate = _.template(libraryTemplateHtml);
 
     // The var books array, which contains book info for multiple books
-    var books = [{
-      title: 'What is the What',
-      author: 'Dave Eggers',
-      status: 'available'
-    },
-    {
-      title:'The Lacuna',
-      author:'Barbara Kingsolver',
-      status:'available'
-    },
-    {
-      title:'The China Study',
-      author: 'T. Colin Campbell',
-      status:'available'
-    }
+    var books = [
+      {
+        title: 'What is the What',
+        author: 'Dave Eggers',
+        status: 'available'
+      },
+      {
+        title:'The Lacuna',
+        author:'Barbara Kingsolver',
+        status:'available'
+      },
+      {
+        title:'The China Study',
+        author: 'T. Colin Campbell',
+        status:'available'
+      }
     ];
 
     // For loop to first iterate through each member of array, then add each book's title, author, and status to html in library div
-    for (i=0; i<books.length;i+=1){
-    var newLibraryHtml = libraryTemplate(books[i])
-    $('#library').append(newLibraryHtml);
-    };
+  //   var renderLibrary = function() {
+  //     for (i=0; i<books.length;i+=1){
+  //     var newLibraryHtml = libraryTemplate(books[i])
+  //     $('#library').append(newLibraryHtml);
+  //     }
+  // };
     
+  //   renderLibrary()
+
+  // User input 
+  $('#submit-button').on('click', function (){
+    var submitTitle = $('#title-input').val();
+    var submitAuthor = $('#author-input').val();
+    var submittedInfo = {title: submitTitle, author: submitAuthor, status:'available'};
+    var newLibraryHtml = libraryTemplate(submittedInfo);
+    $('#library').append(newLibraryHtml);
+  });
 </script>
 
 <small>It's back.</small>
